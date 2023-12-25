@@ -21,8 +21,8 @@ const movieSchema = new mongoose.Schema({
   trailerURL: { 
     type: String,
   },
-  rating: [{
-    id: {
+  ratings: [{
+    user: {
       type: mongoose.Types.ObjectId,
       ref: "users",
     },

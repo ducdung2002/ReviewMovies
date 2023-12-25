@@ -25,6 +25,23 @@ class MovieRepo {
       throw new Error(error.message);
     }
   }
+
+  async rateMovie(id, stars) {
+    try {
+      const movie = await movieModel.findById(id);
+      if (!movie) {
+        throw new Error("Movie not found");
+      }
+
+      movie.ratings.push({ stars });
+
+      await movie.save();
+
+      return movie;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 }
 
 export default new MovieRepo();
